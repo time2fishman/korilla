@@ -3,6 +3,7 @@
   padding: 1em;
   margin: 1em;
   flex-basis: 30%;
+  max-width: 30%;
 }
 
 span {
@@ -12,4 +13,8 @@ span {
 ul {
   list-style: none;
   padding: 0;
+}
+
+li {
+  margin-bottom: 1.5em;
 }

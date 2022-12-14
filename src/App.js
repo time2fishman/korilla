@@ -58,8 +58,10 @@ function App() {
       <header>
         <h1 className="name">Korilla Receipts</h1>
       </header>
-      <main>
-        <Receipt />
+      <main className='container'>
+        <Receipt receiptState={receiptState[0]}/>
+        <Receipt receiptState={receiptState[1]}/>
+        <Receipt receiptState={receiptState[2]}/>
       </main>
     </>
   );
