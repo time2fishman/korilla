@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import Receipt from './components/Receipt';
 
 const initialState = [
   {
@@ -46,13 +47,20 @@ const initialState = [
   },
 ];
 
+
 function App() {
+  // STATE
+  const [receiptState, setReceiptState] = useState(initialState)
+  // console.log(receiptState);
+
   return (
     <>
       <header>
-        <h1 className="name">Korilla</h1>
+        <h1 className="name">Korilla Receipts</h1>
       </header>
-      <main></main>
+      <main>
+        <Receipt />
+      </main>
     </>
   );
 }
