@@ -47,23 +47,30 @@ const initialState = [
   },
 ];
 
-
 function App() {
   // STATE
   const [receiptState, setReceiptState] = useState(initialState)
   // console.log(receiptState);
+  // const [paymentStatus, setPaymentStatus] = useState()
+  // console.log(receiptState[0].paid);
 
+  // for (let i = 0; i < receiptState.length; i++) {
+  //   if (receiptState[i].paid === false) {
+  //     return <p>it's flase</p>
+  //   }
+  // }
   return (
     <>
       <header>
         <h1 className="name">Korilla Receipts</h1>
       </header>
       <main className='container'>
-        {receiptState.map((element, id) => {
-          return <Receipt receipt={element} key={id}/>
-        })}
-        {/* <Receipt receiptState={receiptState[1]}/>
-        <Receipt receiptState={receiptState[2]}/> */}
+        {receiptState
+          .filter((receipt) => receipt.paid === false)
+          .map((receipt, id) => {
+            return <Receipt receipt={receipt} key={id} />
+          })
+        }
       </main>
     </>
   );
