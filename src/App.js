@@ -50,25 +50,32 @@ const initialState = [
 function App() {
   // STATE
   const [receiptState, setReceiptState] = useState(initialState)
-  // console.log(receiptState);
-  // const [paymentStatus, setPaymentStatus] = useState()
-  // console.log(receiptState[0].paid);
 
-  // for (let i = 0; i < receiptState.length; i++) {
-  //   if (receiptState[i].paid === false) {
-  //     return <p>it's flase</p>
-  //   }
-  // }
+  // FUNCTIONS
+  const handleClick = (index) => {
+    // Declaring a new variable to have the same data as receiptState
+    // Notice the spread operator here so the state will actually get updated
+    // instead of just being copied.
+    let allReceipts = [...receiptState]
+    // Change paid from false to true after receipt is clicked
+    allReceipts[receiptState.indexOf(index)].paid = !allReceipts[receiptState.indexOf(index)].paid
+    // Set new state values for receiptState and trigger a rerender after clicking a receipt
+    setReceiptState(allReceipts)
+  }
+
+  // JSX
   return (
     <>
       <header>
         <h1 className="name">Korilla Receipts</h1>
       </header>
       <main className='container'>
+        {/* Filter out receipts so only unpaid receipts show on screen. 
+        Then map through each object and render the unpaid Receipt.js component */}
         {receiptState
           .filter((receipt) => receipt.paid === false)
           .map((receipt, id) => {
-            return <Receipt receipt={receipt} key={id} />
+            return <Receipt handleClick={handleClick} receipt={receipt} key={id} />
           })
         }
       </main>

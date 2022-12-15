@@ -2,9 +2,10 @@ import React from 'react';
 import '../Receipt.css'
 
 const Receipt = (props) => {
-    // console.log(props.receiptState)
+    // JSX
     return (
-        <div className='receipt'>
+        // Run the handleClick function on App.js after div(receipt) is clicked
+        <div onClick={() => props.handleClick(props.receipt)} className='receipt'>
             <h2 className='person'>{props.receipt.person}</h2>
             <ul className='order'>
                 <li className='main'><span>Main: </span>{props.receipt.order.main}</li>
